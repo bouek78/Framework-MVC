@@ -75,6 +75,10 @@
       <Project>{19485c30-e83c-4497-a5d2-4fac074dda5d}</Project>
       <Name>Framework.ILogger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework.Logger\Framework.Logger.csproj">
+      <Project>{8477F07C-9BB0-4EDB-B7D9-ADB3112325DD}</Project>
+      <Name>Framework.Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\readme.txt" />

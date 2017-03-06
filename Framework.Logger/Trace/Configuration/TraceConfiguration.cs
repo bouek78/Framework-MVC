@@ -59,7 +59,7 @@ namespace Framework.Logger.Trace.Configuration
             {
                 if (_current == null)
                 {
-                    _current = (TraceConfiguration)ConfigurationManager.GetSection("Logger.Trace");
+                    _current = (TraceConfiguration)ConfigurationManager.GetSection("logger");
                 }
 
                 return _current;

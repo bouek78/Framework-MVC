@@ -53,6 +53,12 @@
   <ItemGroup>
     <Folder Include="Action\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.ILogger\Framework.ILogger.csproj">
+      <Project>{19485C30-E83C-4497-A5D2-4FAC074DDA5D}</Project>
+      <Name>Framework.ILogger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

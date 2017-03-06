@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using Framework.ILogger.Contracts;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Framework_MVC.Filter
         /// <summary>
         /// Logger
         /// </summary>
-        public static ILog Logger { get; private set; }        
+        public static ITrace Logger { get; private set; }        
 
         #endregion
 
@@ -26,7 +27,7 @@ namespace Framework_MVC.Filter
 
             // TODO : Niveau du log en variable ?
             // Log Info VERB + URL  
-            Logger.Info(String.Format("{0} : {1}", filterContext.RequestContext.HttpContext.Request.HttpMethod, filterContext.RequestContext.HttpContext.Request.Url.AbsoluteUri));
+            Logger.LogInfo(String.Format("{0} : {1}", filterContext.RequestContext.HttpContext.Request.HttpMethod, filterContext.RequestContext.HttpContext.Request.Url.AbsoluteUri));
 
             // Log les clés paramètres/valeur
             StringBuilder sb = new StringBuilder();
@@ -41,7 +42,7 @@ namespace Framework_MVC.Filter
             }
 
             // Log Info Controller / Action
-            Logger.Info(String.Format("Entrée dans controller[{0}] et action[{1}] avec {2}",
+            Logger.LogInfo(String.Format("Entrée dans controller[{0}] et action[{1}] avec {2}",
                                         filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
                                         filterContext.ActionDescriptor.ActionName
                                       )

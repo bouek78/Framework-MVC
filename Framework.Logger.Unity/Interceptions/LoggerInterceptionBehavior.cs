@@ -5,15 +5,16 @@ using System.Text;
 using Microsoft.Practices.Unity.InterceptionExtension;
 using System.Diagnostics;
 using Framework.ILogger.Contracts;
+using Framework.Logger.Trace;
 
 namespace Framework.Logger.Unity
 {
     //[System.Diagnostics.DebuggerStepThrough]
     public class LoggerInterceptionBehavior : IInterceptionBehavior
     {
-        private ILog4NetTraceManager _logManager;
+        private ITraceManager _logManager;
 
-        public LoggerInterceptionBehavior(ILog4NetTraceManager logManager)
+        public LoggerInterceptionBehavior(ITraceManager logManager)
         {
             this._logManager = logManager;
         }
@@ -26,7 +27,6 @@ namespace Framework.Logger.Unity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods")]
         public IMethodReturn Invoke(IMethodInvocation input, GetNextInterceptionBehaviorDelegate getNext)
         {
-
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             var result = getNext()(input, getNext);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Framework.ILogger.Contracts
 {
-    public interface ILog4NetTraceManager
+    public interface ITraceManager
     {
         /// <summary>
         /// Charge le wrapper de trace.

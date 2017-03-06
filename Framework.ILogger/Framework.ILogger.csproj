@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\ILog4NetTraceManager.cs" />
+    <Compile Include="Contracts\ITraceManager.cs" />
     <Compile Include="Contracts\ITrace.cs" />
     <Compile Include="Helper\LoggerExtender.cs" />
     <Compile Include="Models\ApplicativeContext.cs" />

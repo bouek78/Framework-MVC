@@ -8,9 +8,8 @@ namespace Framework.Logger.Trace
     /// <summary>
     /// Gestionnaire de trace. C'est le point d'accès central vous permettant d'obtenir une instance de ILogger selon vos besoins.
     /// </summary>
-    public class Log4NetTraceManager : ILog4NetTraceManager
+    public class Log4NetTraceManager : ITraceManager
     {
-
         #region "Attributs"
 
         /// <summary>
@@ -85,7 +84,6 @@ namespace Framework.Logger.Trace
 
         #endregion
 
-
         #region "Méthodes privées"          
 
         /// <summary>
@@ -95,7 +93,7 @@ namespace Framework.Logger.Trace
         /// <param name="loggerName">Nom du logger à utiliser.</param>
         /// <returns>Un wrapper de trace.</returns>
         /// <remarks>WrapperName peut être nul, auquel cas le wrapper par défaut est utilisé. Si loggerName est nul, "Logger.Trace" est utilisé.</remarks>
-        private ITrace GetInternalLogger(string wrapperName, string loggerName)
+        private static ITrace GetInternalLogger(string wrapperName, string loggerName)
         {
             ITrace result = null;
 
@@ -147,7 +145,7 @@ namespace Framework.Logger.Trace
         /// <param name="type">Type du logger à utiliser.</param>
         /// <returns>Un wrapper de trace.</returns>
         /// <remarks>WrapperName peut être nul, auquel cas le wrapper par défaut est utilisé. Si loggerName est nul, "Logger.Trace" est utilisé.</remarks>
-        private ITrace GetInternalLogger(string wrapperName, Type type)
+        private static ITrace GetInternalLogger(string wrapperName, Type type)
         {
             ITrace result = null;
 

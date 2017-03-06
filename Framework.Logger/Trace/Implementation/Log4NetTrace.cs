@@ -12,7 +12,6 @@ namespace Framework.Logger.Trace.Implementation
     /// </summary>
     public class Log4NetTrace : ITrace
     {
-
         #region "Attributs"
 
         /// <summary>
@@ -897,7 +896,6 @@ namespace Framework.Logger.Trace.Implementation
         }
 
         #endregion
-
 
         #region "Méthodes privées"
 
