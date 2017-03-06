@@ -1,0 +1,17 @@
+﻿Le Logger a actuellement 2 implémentations :
+- DisabledTrace qui implémente ITrace qui sert de fallback si rien n'est configuré ou qu'une erreur survient sur l'appel d'une trace implémenté.
+- Log4NetTrace qui implemente ITrace et qui sert à logguer avec le framework log4net.
+D'autres framework de suivi peuvent être implémenté tel que nLog, TraceSource, ..., ou vers une base de données.
+Pour cela, n'oubliez pas d'utiliser ApplicativeContext qui permet d'accéder à un context quel qu'il soit (HttpContext ou stack de l'assembly)
+
+Un Actionfilter Logfilter est créé pour le MVC, permettant le log auto de toute les entrées/sorties sur les actions des controller.
+Il est implémenté sur GEMControllerBase. Tout controller héritant de celui ci aura donc ses I/O de loggué de manière automatique.
+
+Un appender pour ELMAH, permettant la persistance de ces log dans le système ELMAH.
+
+
+  <!-- Configuration du système de trace globale -->
+  <Logger.Trace default="Log4Net">
+    <clear />
+    <add name="Log4Net" type="Framework.Logger.Trace.Implementation.Log4NetTrace, 0-Logger" FileConfiguration="~/log4net.config" />      
+  </Logger.Trace>
