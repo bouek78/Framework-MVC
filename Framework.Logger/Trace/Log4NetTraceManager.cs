@@ -8,7 +8,7 @@ namespace Framework.Logger.Trace
     /// <summary>
     /// Gestionnaire de trace. C'est le point d'accès central vous permettant d'obtenir une instance de ILogger selon vos besoins.
     /// </summary>
-    public class Log4NetTraceManager : ITraceManager
+    public class Log4NetTraceManager //: ITraceManager
     {
         #region "Attributs"
 
@@ -24,6 +24,22 @@ namespace Framework.Logger.Trace
         private const string DEFAULT_LOGGER_NAME = "Logger";
         #endregion
 
+        // pas de singleton avec unity
+        //private Log4NetTraceManager() { }
+        //private static Log4NetTraceManager _instance;
+
+        //public static Log4NetTraceManager Instance
+        //{
+        //    get
+        //    {
+        //        if (_instance == null)
+        //        {
+        //            _instance = new Log4NetTraceManager();
+        //        }
+        //        return _instance;
+        //    }
+        //}
+
         #region "Méthodes publiques"
 
         /// <summary>
@@ -31,7 +47,7 @@ namespace Framework.Logger.Trace
         /// </summary>
         /// <returns>Un wrapper de trace.</returns>
         /// <remarks>WrapperName peut être nul, auquel cas le wrapper par défaut est utilisé. Si loggerName est nul, "Logger.Trace" est utilisé.</remarks>
-        public ITrace GetLogger()
+        public static ITrace GetLogger()
         {
             return GetInternalLogger(null, System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }
@@ -42,7 +58,7 @@ namespace Framework.Logger.Trace
         /// <param name="loggerName">Nom du logger à utiliser.</param>
         /// <returns>Un wrapper de trace.</returns>
         /// <remarks>WrapperName peut être nul, auquel cas le wrapper par défaut est utilisé. Si loggerName est nul, "Logger.Trace" est utilisé.</remarks>
-        public ITrace GetLogger(string loggerName)
+        public static ITrace GetLogger(string loggerName)
         {
             return GetInternalLogger(string.Empty, loggerName);
         }
@@ -53,7 +69,7 @@ namespace Framework.Logger.Trace
         /// <param name="type">Type du logger à utiliser.</param>
         /// <returns>Un wrapper de trace.</returns>
         /// <remarks>WrapperName peut être nul, auquel cas le wrapper par défaut est utilisé. Si loggerName est nul, "Logger.Trace" est utilisé.</remarks>
-        public ITrace GetLogger(Type type)
+        public static ITrace GetLogger(Type type)
         {
             return GetInternalLogger(string.Empty, type);
         }
@@ -65,7 +81,7 @@ namespace Framework.Logger.Trace
         /// <param name="loggerName">Nom du logger à utiliser.</param>
         /// <returns>Un wrapper de trace.</returns>
         /// <remarks>WrapperName peut être nul, auquel cas le wrapper par défaut est utilisé. Si loggerName est nul, "Logger.Trace" est utilisé.</remarks>
-        public ITrace GetLogger(string wrapperName, string loggerName)
+        public static ITrace GetLogger(string wrapperName, string loggerName)
         {
             return GetInternalLogger(wrapperName, loggerName);
         }
@@ -77,7 +93,7 @@ namespace Framework.Logger.Trace
         /// <param name="type">Type du logger à utiliser.</param>
         /// <returns>Un wrapper de trace.</returns>
         /// <remarks>WrapperName peut être nul, auquel cas le wrapper par défaut est utilisé. Si loggerName est nul, "Logger.Trace" est utilisé.</remarks>
-        public ITrace GetLogger(string wrapperName, Type type)
+        public static ITrace GetLogger(string wrapperName, Type type)
         {
             return GetInternalLogger(wrapperName, type);
         }
